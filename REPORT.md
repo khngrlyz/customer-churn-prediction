@@ -311,7 +311,7 @@ This is conservative - doesn't account for multi-year CLV or reduced acquisition
 **Model enhancements**:
 - Add SHAP values for individual prediction explanations
 - Try ensemble stacking (XGBoost + LightGBM)
-- Incorporate time-series features (usage trends over past 3 months)
+- Incorporate time-series features (usage trends over past 3 months if there was an available data)
 
 **Production features**:
 - Docker containerization for consistent deployment
@@ -346,7 +346,7 @@ The model is ready for production deployment and can be integrated into customer
 
 ## How to Use This Model
 
-1. **Training**: Run `python src/train_model.py` (~3-4 min)
+1. **Training**: Run `python src/train_model.py` 
 2. **Testing**: Run `python test_api.py` to verify functionality
 3. **Deployment**: Run `python src/app.py` to start the API
 4. **Integration**: Send POST requests to `http://localhost:8000/predict`
