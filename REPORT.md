@@ -238,37 +238,25 @@ I chose FastAPI over Flask because:
 
 ### Challenge 1: Class Imbalance
 
-**Problem**: With 73/27 split, initial model was biased toward "No Churn"
-**What I tried**: Class weights first, but wasn't effective enough
-**Solution**: SMOTE on training set only
+**Problem**: With 73/27 split, initial model was biased toward "No Churn"  
+**What I tried**: Class weights first, but wasn't effective enough  
+**Solution**: SMOTE on training set only  
 **Result**: Recall jumped from 40% → 64%
 
 ### Challenge 2: Feature Engineering
 
-**Problem**: Raw features didn't capture non-linear relationships
-**What I tried**: Polynomial features - created too many features, overfitting
-**Solution**: Domain-driven binning (tenure_group) and interaction features
+**Problem**: Raw features didn't capture non-linear relationships  
+**What I tried**: Polynomial features - created too many features, overfitting  
+**Solution**: Domain-driven binning (tenure_group) and interaction features  
 **Result**: tenure_group became 2nd most important feature
 
 ### Challenge 3: Hyperparameter Search Time
 
-**Problem**: 324 configurations × 5 folds = 1,620 model fits would take 15+ minutes sequentially
-**Solution**: Used `n_jobs=-1` to parallelize across all CPU cores
+**Problem**: 324 configurations × 5 folds = 1,620 model fits would take 15+ minutes sequentially  
+**Solution**: Used `n_jobs=-1` to parallelize across all CPU cores  
 **Result**: Reduced to ~3 minutes for GridSearchCV (plus ~1 min for baseline models)
 
 **Production consideration**: Added a `COMPARE_BASELINES` flag in the training script so baseline comparison can be skipped in production retraining (saves ~1 minute)
-
-### Challenge 4: sklearn Version Issues
-
-**Problem**: Notebook failed with `TSNE(n_iter=1000)` - parameter deprecated
-**Solution**: Changed to `max_iter=1000` for newer sklearn versions
-**Lesson**: Pin dependencies in requirements.txt
-
-### Challenge 5: Production Latency
-
-**Problem**: Initial API loaded model on every request (~500ms per prediction)
-**Solution**: Load model once at startup, keep in memory
-**Result**: < 50ms latency
 
 ---
 
