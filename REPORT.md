@@ -109,9 +109,8 @@ I trained 4 different algorithms on the same preprocessed data:
 
 1. Best accuracy among the options
 2. Fast training and inference (~5ms predictions)
-3. CPU-optimized (no GPU needed)
-4. Built-in regularization (prevents overfitting)
-5. Gives feature importance (helps with interpretability)
+3. Built-in regularization (prevents overfitting)
+4. Gives feature importance (helps with interpretability)
 
 ### Hyperparameter Tuning
 
@@ -130,8 +129,6 @@ I trained 4 different algorithms on the same preprocessed data:
 ```
 
 **Optimization metric**: ROC-AUC (better than accuracy for imbalanced data)
-
-**Time**: About 3-4 minutes total on an 8-core CPU (including baseline model training)
 
 **Best parameters**:
 ```python
@@ -256,7 +253,7 @@ I chose FastAPI over Flask because:
 ### Challenge 3: Hyperparameter Search Time
 
 **Problem**: 324 configurations × 5 folds = 1,620 model fits would take 15+ minutes sequentially
-**Solution**: Used `n_jobs=-1` to parallelize across all 8 CPU cores
+**Solution**: Used `n_jobs=-1` to parallelize across all CPU cores
 **Result**: Reduced to ~3 minutes for GridSearchCV (plus ~1 min for baseline models)
 
 **Production consideration**: Added a `COMPARE_BASELINES` flag in the training script so baseline comparison can be skipped in production retraining (saves ~1 minute)
