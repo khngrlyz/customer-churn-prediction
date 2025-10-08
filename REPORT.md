@@ -328,7 +328,6 @@ This is conservative - doesn't account for multi-year CLV or reduced acquisition
 
 ## 10. Conclusion
 
-I built an end-to-end churn prediction system that:
 
 **Technical achievements**:
 - 77.93% accuracy, 0.82 ROC-AUC
