@@ -7,7 +7,6 @@ ML system for predicting customer churn in telecom using XGBoost + FastAPI.
 - **Accuracy**: 77.93%
 - **ROC-AUC**: 0.82
 - **F1 Score**: 0.61
-- **Training Time**: ~3-4 minutes (4 baseline models + GridSearchCV with 324 configs)
 
 ## Setup
 
