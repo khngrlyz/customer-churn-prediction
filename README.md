@@ -29,7 +29,6 @@ This will:
 - Run hyperparameter tuning on XGBoost
 - Save the best model to `models/`
 
-Takes about 3-4 minutes on my machine (8-core CPU).
 
 **Note**: You can set `COMPARE_BASELINES = False` in the script to skip baseline comparison and reduce training time to ~2-3 minutes.
 
